@@ -3,8 +3,1251 @@
     <head>
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
         <title>Sudoku Solver</title>
+        <link rel="stylesheet" href="/static/index.css">
     </head>
     <body>
         <h2>Welcome to Sudoku Solver</h2>
+
+        <br>
+        <br>
+
+        <div id="boardOuter" class="board">
+            <div class="row" id="row1">
+                <div class="cell" id="cell11">
+                    <h1 id="cell11solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell11input" hidden>
+                        <p id="cell11possible1" class="possible">1</p>
+                        <p id="cell11possible2" class="possible">2</p>
+                        <p id="cell11possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell11possible4" class="possible">4</p>
+                        <p id="cell11possible5" class="possible">5</p>
+                        <p id="cell11possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell11possible7" class="possible">7</p>
+                        <p id="cell11possible8" class="possible">8</p>
+                        <p id="cell11possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell12">
+                    <h1 id="cell12solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell12input" hidden>
+                        <p id="cell12possible1" class="possible">1</p>
+                        <p id="cell12possible2" class="possible">2</p>
+                        <p id="cell12possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell12possible4" class="possible">4</p>
+                        <p id="cell12possible5" class="possible">5</p>
+                        <p id="cell12possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell12possible7" class="possible">7</p>
+                        <p id="cell12possible8" class="possible">8</p>
+                        <p id="cell12possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell13">
+                    <h1 id="cell13solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell13input" hidden>
+                        <p id="cell13possible1" class="possible">1</p>
+                        <p id="cell13possible2" class="possible">2</p>
+                        <p id="cell13possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell13possible4" class="possible">4</p>
+                        <p id="cell13possible5" class="possible">5</p>
+                        <p id="cell13possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell13possible7" class="possible">7</p>
+                        <p id="cell13possible8" class="possible">8</p>
+                        <p id="cell13possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell14">
+                    <h1 id="cell14solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell14input" hidden>
+                        <p id="cell14possible1" class="possible">1</p>
+                        <p id="cell14possible2" class="possible">2</p>
+                        <p id="cell14possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell14possible4" class="possible">4</p>
+                        <p id="cell14possible5" class="possible">5</p>
+                        <p id="cell14possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell14possible7" class="possible">7</p>
+                        <p id="cell14possible8" class="possible">8</p>
+                        <p id="cell14possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell15">
+                    <h1 id="cell15solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell15input" hidden>
+                        <p id="cell15possible1" class="possible">1</p>
+                        <p id="cell15possible2" class="possible">2</p>
+                        <p id="cell15possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell15possible4" class="possible">4</p>
+                        <p id="cell15possible5" class="possible">5</p>
+                        <p id="cell15possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell15possible7" class="possible">7</p>
+                        <p id="cell15possible8" class="possible">8</p>
+                        <p id="cell15possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell16">
+                    <h1 id="cell16solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell16input" hidden>
+                        <p id="cell16possible1" class="possible">1</p>
+                        <p id="cell16possible2" class="possible">2</p>
+                        <p id="cell16possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell16possible4" class="possible">4</p>
+                        <p id="cell16possible5" class="possible">5</p>
+                        <p id="cell16possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell16possible7" class="possible">7</p>
+                        <p id="cell16possible8" class="possible">8</p>
+                        <p id="cell16possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell17">
+                    <h1 id="cell17solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell17input" hidden>
+                        <p id="cell17possible1" class="possible">1</p>
+                        <p id="cell17possible2" class="possible">2</p>
+                        <p id="cell17possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell17possible4" class="possible">4</p>
+                        <p id="cell17possible5" class="possible">5</p>
+                        <p id="cell17possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell17possible7" class="possible">7</p>
+                        <p id="cell17possible8" class="possible">8</p>
+                        <p id="cell17possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell18">
+                    <h1 id="cell18solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell18input" hidden>
+                        <p id="cell18possible1" class="possible">1</p>
+                        <p id="cell18possible2" class="possible">2</p>
+                        <p id="cell18possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell18possible4" class="possible">4</p>
+                        <p id="cell18possible5" class="possible">5</p>
+                        <p id="cell18possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell18possible7" class="possible">7</p>
+                        <p id="cell18possible8" class="possible">8</p>
+                        <p id="cell18possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell19">
+                    <h1 id="cell19solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell19input" hidden>
+                        <p id="cell19possible1" class="possible">1</p>
+                        <p id="cell19possible2" class="possible">2</p>
+                        <p id="cell19possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell19possible4" class="possible">4</p>
+                        <p id="cell19possible5" class="possible">5</p>
+                        <p id="cell19possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell19possible7" class="possible">7</p>
+                        <p id="cell19possible8" class="possible">8</p>
+                        <p id="cell19possible9" class="possible">9</p>
+                </div>
+            </div>
+            <div class="row" id="row2">
+                <div class="cell" id="cell21">
+                    <h1 id="cell21solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell21input" hidden>
+                        <p id="cell21possible1" class="possible">1</p>
+                        <p id="cell21possible2" class="possible">2</p>
+                        <p id="cell21possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell21possible4" class="possible">4</p>
+                        <p id="cell21possible5" class="possible">5</p>
+                        <p id="cell21possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell21possible7" class="possible">7</p>
+                        <p id="cell21possible8" class="possible">8</p>
+                        <p id="cell21possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell22">
+                    <h1 id="cell22solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell22input" hidden>
+                        <p id="cell22possible1" class="possible">1</p>
+                        <p id="cell22possible2" class="possible">2</p>
+                        <p id="cell22possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell22possible4" class="possible">4</p>
+                        <p id="cell22possible5" class="possible">5</p>
+                        <p id="cell22possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell22possible7" class="possible">7</p>
+                        <p id="cell22possible8" class="possible">8</p>
+                        <p id="cell22possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell23">
+                    <h1 id="cell23solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell23input" hidden>
+                        <p id="cell23possible1" class="possible">1</p>
+                        <p id="cell23possible2" class="possible">2</p>
+                        <p id="cell23possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell23possible4" class="possible">4</p>
+                        <p id="cell23possible5" class="possible">5</p>
+                        <p id="cell23possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell23possible7" class="possible">7</p>
+                        <p id="cell23possible8" class="possible">8</p>
+                        <p id="cell23possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell24">
+                    <h1 id="cell24solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell24input" hidden>
+                        <p id="cell24possible1" class="possible">1</p>
+                        <p id="cell24possible2" class="possible">2</p>
+                        <p id="cell24possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell24possible4" class="possible">4</p>
+                        <p id="cell24possible5" class="possible">5</p>
+                        <p id="cell24possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell24possible7" class="possible">7</p>
+                        <p id="cell24possible8" class="possible">8</p>
+                        <p id="cell24possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell25">
+                    <h1 id="cell25solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell25input" hidden>
+                        <p id="cell25possible1" class="possible">1</p>
+                        <p id="cell25possible2" class="possible">2</p>
+                        <p id="cell25possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell25possible4" class="possible">4</p>
+                        <p id="cell25possible5" class="possible">5</p>
+                        <p id="cell25possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell25possible7" class="possible">7</p>
+                        <p id="cell25possible8" class="possible">8</p>
+                        <p id="cell25possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell26">
+                    <h1 id="cell26solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell26input" hidden>
+                        <p id="cell26possible1" class="possible">1</p>
+                        <p id="cell26possible2" class="possible">2</p>
+                        <p id="cell26possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell26possible4" class="possible">4</p>
+                        <p id="cell26possible5" class="possible">5</p>
+                        <p id="cell26possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell26possible7" class="possible">7</p>
+                        <p id="cell26possible8" class="possible">8</p>
+                        <p id="cell26possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell27">
+                    <h1 id="cell27solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell27input" hidden>
+                        <p id="cell27possible1" class="possible">1</p>
+                        <p id="cell27possible2" class="possible">2</p>
+                        <p id="cell27possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell27possible4" class="possible">4</p>
+                        <p id="cell27possible5" class="possible">5</p>
+                        <p id="cell27possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell27possible7" class="possible">7</p>
+                        <p id="cell27possible8" class="possible">8</p>
+                        <p id="cell27possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell28">
+                    <h1 id="cell28solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell28input" hidden>
+                        <p id="cell28possible1" class="possible">1</p>
+                        <p id="cell28possible2" class="possible">2</p>
+                        <p id="cell28possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell28possible4" class="possible">4</p>
+                        <p id="cell28possible5" class="possible">5</p>
+                        <p id="cell28possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell28possible7" class="possible">7</p>
+                        <p id="cell28possible8" class="possible">8</p>
+                        <p id="cell28possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell29">
+                    <h1 id="cell29solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell29input" hidden>
+                        <p id="cell29possible1" class="possible">1</p>
+                        <p id="cell29possible2" class="possible">2</p>
+                        <p id="cell29possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell29possible4" class="possible">4</p>
+                        <p id="cell29possible5" class="possible">5</p>
+                        <p id="cell29possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell29possible7" class="possible">7</p>
+                        <p id="cell29possible8" class="possible">8</p>
+                        <p id="cell29possible9" class="possible">9</p>
+                </div>
+            </div>
+            <div class="row" id="row3">
+                <div class="cell" id="cell31">
+                    <h1 id="cell31solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell31input" hidden>
+                        <p id="cell31possible1" class="possible">1</p>
+                        <p id="cell31possible2" class="possible">2</p>
+                        <p id="cell31possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell31possible4" class="possible">4</p>
+                        <p id="cell31possible5" class="possible">5</p>
+                        <p id="cell31possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell31possible7" class="possible">7</p>
+                        <p id="cell31possible8" class="possible">8</p>
+                        <p id="cell31possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell32">
+                    <h1 id="cell32solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell32input" hidden>
+                        <p id="cell32possible1" class="possible">1</p>
+                        <p id="cell32possible2" class="possible">2</p>
+                        <p id="cell32possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell32possible4" class="possible">4</p>
+                        <p id="cell32possible5" class="possible">5</p>
+                        <p id="cell32possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell32possible7" class="possible">7</p>
+                        <p id="cell32possible8" class="possible">8</p>
+                        <p id="cell32possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell33">
+                    <h1 id="cell33solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell33input" hidden>
+                        <p id="cell33possible1" class="possible">1</p>
+                        <p id="cell33possible2" class="possible">2</p>
+                        <p id="cell33possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell33possible4" class="possible">4</p>
+                        <p id="cell33possible5" class="possible">5</p>
+                        <p id="cell33possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell33possible7" class="possible">7</p>
+                        <p id="cell33possible8" class="possible">8</p>
+                        <p id="cell33possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell34">
+                    <h1 id="cell34solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell34input" hidden>
+                        <p id="cell34possible1" class="possible">1</p>
+                        <p id="cell34possible2" class="possible">2</p>
+                        <p id="cell34possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell34possible4" class="possible">4</p>
+                        <p id="cell34possible5" class="possible">5</p>
+                        <p id="cell34possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell34possible7" class="possible">7</p>
+                        <p id="cell34possible8" class="possible">8</p>
+                        <p id="cell34possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell35">
+                    <h1 id="cell35solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell35input" hidden>
+                        <p id="cell35possible1" class="possible">1</p>
+                        <p id="cell35possible2" class="possible">2</p>
+                        <p id="cell35possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell35possible4" class="possible">4</p>
+                        <p id="cell35possible5" class="possible">5</p>
+                        <p id="cell35possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell35possible7" class="possible">7</p>
+                        <p id="cell35possible8" class="possible">8</p>
+                        <p id="cell35possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell36">
+                    <h1 id="cell36solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell36input" hidden>
+                        <p id="cell36possible1" class="possible">1</p>
+                        <p id="cell36possible2" class="possible">2</p>
+                        <p id="cell36possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell36possible4" class="possible">4</p>
+                        <p id="cell36possible5" class="possible">5</p>
+                        <p id="cell36possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell36possible7" class="possible">7</p>
+                        <p id="cell36possible8" class="possible">8</p>
+                        <p id="cell36possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell37">
+                    <h1 id="cell37solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell37input" hidden>
+                        <p id="cell37possible1" class="possible">1</p>
+                        <p id="cell37possible2" class="possible">2</p>
+                        <p id="cell37possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell37possible4" class="possible">4</p>
+                        <p id="cell37possible5" class="possible">5</p>
+                        <p id="cell37possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell37possible7" class="possible">7</p>
+                        <p id="cell37possible8" class="possible">8</p>
+                        <p id="cell37possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell38">
+                    <h1 id="cell38solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell38input" hidden>
+                        <p id="cell38possible1" class="possible">1</p>
+                        <p id="cell38possible2" class="possible">2</p>
+                        <p id="cell38possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell38possible4" class="possible">4</p>
+                        <p id="cell38possible5" class="possible">5</p>
+                        <p id="cell38possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell38possible7" class="possible">7</p>
+                        <p id="cell38possible8" class="possible">8</p>
+                        <p id="cell38possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell39">
+                    <h1 id="cell39solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell39input" hidden>
+                        <p id="cell39possible1" class="possible">1</p>
+                        <p id="cell39possible2" class="possible">2</p>
+                        <p id="cell39possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell39possible4" class="possible">4</p>
+                        <p id="cell39possible5" class="possible">5</p>
+                        <p id="cell39possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell39possible7" class="possible">7</p>
+                        <p id="cell39possible8" class="possible">8</p>
+                        <p id="cell39possible9" class="possible">9</p>
+                </div>
+            </div>
+            <div class="row" id="row4">
+                <div class="cell" id="cell41">
+                    <h1 id="cell41solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell41input" hidden>
+                        <p id="cell41possible1" class="possible">1</p>
+                        <p id="cell41possible2" class="possible">2</p>
+                        <p id="cell41possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell41possible4" class="possible">4</p>
+                        <p id="cell41possible5" class="possible">5</p>
+                        <p id="cell41possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell41possible7" class="possible">7</p>
+                        <p id="cell41possible8" class="possible">8</p>
+                        <p id="cell41possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell42">
+                    <h1 id="cell42solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell42input" hidden>
+                        <p id="cell42possible1" class="possible">1</p>
+                        <p id="cell42possible2" class="possible">2</p>
+                        <p id="cell42possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell42possible4" class="possible">4</p>
+                        <p id="cell42possible5" class="possible">5</p>
+                        <p id="cell42possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell42possible7" class="possible">7</p>
+                        <p id="cell42possible8" class="possible">8</p>
+                        <p id="cell42possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell43">
+                    <h1 id="cell43solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell43input" hidden>
+                        <p id="cell43possible1" class="possible">1</p>
+                        <p id="cell43possible2" class="possible">2</p>
+                        <p id="cell43possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell43possible4" class="possible">4</p>
+                        <p id="cell43possible5" class="possible">5</p>
+                        <p id="cell43possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell43possible7" class="possible">7</p>
+                        <p id="cell43possible8" class="possible">8</p>
+                        <p id="cell43possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell44">
+                    <h1 id="cell44solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell44input" hidden>
+                        <p id="cell44possible1" class="possible">1</p>
+                        <p id="cell44possible2" class="possible">2</p>
+                        <p id="cell44possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell44possible4" class="possible">4</p>
+                        <p id="cell44possible5" class="possible">5</p>
+                        <p id="cell44possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell44possible7" class="possible">7</p>
+                        <p id="cell44possible8" class="possible">8</p>
+                        <p id="cell44possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell45">
+                    <h1 id="cell45solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell45input" hidden>
+                        <p id="cell45possible1" class="possible">1</p>
+                        <p id="cell45possible2" class="possible">2</p>
+                        <p id="cell45possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell45possible4" class="possible">4</p>
+                        <p id="cell45possible5" class="possible">5</p>
+                        <p id="cell45possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell45possible7" class="possible">7</p>
+                        <p id="cell45possible8" class="possible">8</p>
+                        <p id="cell45possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell46">
+                    <h1 id="cell46solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell46input" hidden>
+                        <p id="cell46possible1" class="possible">1</p>
+                        <p id="cell46possible2" class="possible">2</p>
+                        <p id="cell46possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell46possible4" class="possible">4</p>
+                        <p id="cell46possible5" class="possible">5</p>
+                        <p id="cell46possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell46possible7" class="possible">7</p>
+                        <p id="cell46possible8" class="possible">8</p>
+                        <p id="cell46possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell47">
+                    <h1 id="cell47solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell47input" hidden>
+                        <p id="cell47possible1" class="possible">1</p>
+                        <p id="cell47possible2" class="possible">2</p>
+                        <p id="cell47possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell47possible4" class="possible">4</p>
+                        <p id="cell47possible5" class="possible">5</p>
+                        <p id="cell47possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell47possible7" class="possible">7</p>
+                        <p id="cell47possible8" class="possible">8</p>
+                        <p id="cell47possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell48">
+                    <h1 id="cell48solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell48input" hidden>
+                        <p id="cell48possible1" class="possible">1</p>
+                        <p id="cell48possible2" class="possible">2</p>
+                        <p id="cell48possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell48possible4" class="possible">4</p>
+                        <p id="cell48possible5" class="possible">5</p>
+                        <p id="cell48possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell48possible7" class="possible">7</p>
+                        <p id="cell48possible8" class="possible">8</p>
+                        <p id="cell48possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell49">
+                    <h1 id="cell49solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell49input" hidden>
+                        <p id="cell49possible1" class="possible">1</p>
+                        <p id="cell49possible2" class="possible">2</p>
+                        <p id="cell49possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell49possible4" class="possible">4</p>
+                        <p id="cell49possible5" class="possible">5</p>
+                        <p id="cell49possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell49possible7" class="possible">7</p>
+                        <p id="cell49possible8" class="possible">8</p>
+                        <p id="cell49possible9" class="possible">9</p>
+                </div>
+            </div>
+            <div class="row" id="row5">
+                <div class="cell" id="cell51">
+                    <h1 id="cell51solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell51input" hidden>
+                        <p id="cell51possible1" class="possible">1</p>
+                        <p id="cell51possible2" class="possible">2</p>
+                        <p id="cell51possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell51possible4" class="possible">4</p>
+                        <p id="cell51possible5" class="possible">5</p>
+                        <p id="cell51possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell51possible7" class="possible">7</p>
+                        <p id="cell51possible8" class="possible">8</p>
+                        <p id="cell51possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell52">
+                    <h1 id="cell52solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell52input" hidden>
+                        <p id="cell52possible1" class="possible">1</p>
+                        <p id="cell52possible2" class="possible">2</p>
+                        <p id="cell52possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell52possible4" class="possible">4</p>
+                        <p id="cell52possible5" class="possible">5</p>
+                        <p id="cell52possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell52possible7" class="possible">7</p>
+                        <p id="cell52possible8" class="possible">8</p>
+                        <p id="cell52possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell53">
+                    <h1 id="cell53solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell53input" hidden>
+                        <p id="cell53possible1" class="possible">1</p>
+                        <p id="cell53possible2" class="possible">2</p>
+                        <p id="cell53possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell53possible4" class="possible">4</p>
+                        <p id="cell53possible5" class="possible">5</p>
+                        <p id="cell53possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell53possible7" class="possible">7</p>
+                        <p id="cell53possible8" class="possible">8</p>
+                        <p id="cell53possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell54">
+                    <h1 id="cell54solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell54input" hidden>
+                        <p id="cell54possible1" class="possible">1</p>
+                        <p id="cell54possible2" class="possible">2</p>
+                        <p id="cell54possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell54possible4" class="possible">4</p>
+                        <p id="cell54possible5" class="possible">5</p>
+                        <p id="cell54possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell54possible7" class="possible">7</p>
+                        <p id="cell54possible8" class="possible">8</p>
+                        <p id="cell54possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell55">
+                    <h1 id="cell55solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell55input" hidden>
+                        <p id="cell55possible1" class="possible">1</p>
+                        <p id="cell55possible2" class="possible">2</p>
+                        <p id="cell55possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell55possible4" class="possible">4</p>
+                        <p id="cell55possible5" class="possible">5</p>
+                        <p id="cell55possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell55possible7" class="possible">7</p>
+                        <p id="cell55possible8" class="possible">8</p>
+                        <p id="cell55possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell56">
+                    <h1 id="cell56solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell56input" hidden>
+                        <p id="cell56possible1" class="possible">1</p>
+                        <p id="cell56possible2" class="possible">2</p>
+                        <p id="cell56possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell56possible4" class="possible">4</p>
+                        <p id="cell56possible5" class="possible">5</p>
+                        <p id="cell56possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell56possible7" class="possible">7</p>
+                        <p id="cell56possible8" class="possible">8</p>
+                        <p id="cell56possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell57">
+                    <h1 id="cell57solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell57input" hidden>
+                        <p id="cell57possible1" class="possible">1</p>
+                        <p id="cell57possible2" class="possible">2</p>
+                        <p id="cell57possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell57possible4" class="possible">4</p>
+                        <p id="cell57possible5" class="possible">5</p>
+                        <p id="cell57possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell57possible7" class="possible">7</p>
+                        <p id="cell57possible8" class="possible">8</p>
+                        <p id="cell57possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell58">
+                    <h1 id="cell58solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell58input" hidden>
+                        <p id="cell58possible1" class="possible">1</p>
+                        <p id="cell58possible2" class="possible">2</p>
+                        <p id="cell58possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell58possible4" class="possible">4</p>
+                        <p id="cell58possible5" class="possible">5</p>
+                        <p id="cell58possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell58possible7" class="possible">7</p>
+                        <p id="cell58possible8" class="possible">8</p>
+                        <p id="cell58possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell59">
+                    <h1 id="cell59solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell59input" hidden>
+                        <p id="cell59possible1" class="possible">1</p>
+                        <p id="cell59possible2" class="possible">2</p>
+                        <p id="cell59possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell59possible4" class="possible">4</p>
+                        <p id="cell59possible5" class="possible">5</p>
+                        <p id="cell59possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell59possible7" class="possible">7</p>
+                        <p id="cell59possible8" class="possible">8</p>
+                        <p id="cell59possible9" class="possible">9</p>
+                </div>
+            </div>
+            <div class="row" id="row6">
+                <div class="cell" id="cell61">
+                    <h1 id="cell61solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell61input" hidden>
+                        <p id="cell61possible1" class="possible">1</p>
+                        <p id="cell61possible2" class="possible">2</p>
+                        <p id="cell61possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell61possible4" class="possible">4</p>
+                        <p id="cell61possible5" class="possible">5</p>
+                        <p id="cell61possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell61possible7" class="possible">7</p>
+                        <p id="cell61possible8" class="possible">8</p>
+                        <p id="cell61possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell62">
+                    <h1 id="cell62solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell62input" hidden>
+                        <p id="cell62possible1" class="possible">1</p>
+                        <p id="cell62possible2" class="possible">2</p>
+                        <p id="cell62possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell62possible4" class="possible">4</p>
+                        <p id="cell62possible5" class="possible">5</p>
+                        <p id="cell62possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell62possible7" class="possible">7</p>
+                        <p id="cell62possible8" class="possible">8</p>
+                        <p id="cell62possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell63">
+                    <h1 id="cell63solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell63input" hidden>
+                        <p id="cell63possible1" class="possible">1</p>
+                        <p id="cell63possible2" class="possible">2</p>
+                        <p id="cell63possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell63possible4" class="possible">4</p>
+                        <p id="cell63possible5" class="possible">5</p>
+                        <p id="cell63possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell63possible7" class="possible">7</p>
+                        <p id="cell63possible8" class="possible">8</p>
+                        <p id="cell63possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell64">
+                    <h1 id="cell64solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell64input" hidden>
+                        <p id="cell64possible1" class="possible">1</p>
+                        <p id="cell64possible2" class="possible">2</p>
+                        <p id="cell64possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell64possible4" class="possible">4</p>
+                        <p id="cell64possible5" class="possible">5</p>
+                        <p id="cell64possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell64possible7" class="possible">7</p>
+                        <p id="cell64possible8" class="possible">8</p>
+                        <p id="cell64possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell65">
+                    <h1 id="cell65solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell65input" hidden>
+                        <p id="cell65possible1" class="possible">1</p>
+                        <p id="cell65possible2" class="possible">2</p>
+                        <p id="cell65possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell65possible4" class="possible">4</p>
+                        <p id="cell65possible5" class="possible">5</p>
+                        <p id="cell65possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell65possible7" class="possible">7</p>
+                        <p id="cell65possible8" class="possible">8</p>
+                        <p id="cell65possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell66">
+                    <h1 id="cell66solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell66input" hidden>
+                        <p id="cell66possible1" class="possible">1</p>
+                        <p id="cell66possible2" class="possible">2</p>
+                        <p id="cell66possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell66possible4" class="possible">4</p>
+                        <p id="cell66possible5" class="possible">5</p>
+                        <p id="cell66possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell66possible7" class="possible">7</p>
+                        <p id="cell66possible8" class="possible">8</p>
+                        <p id="cell66possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell67">
+                    <h1 id="cell67solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell67input" hidden>
+                        <p id="cell67possible1" class="possible">1</p>
+                        <p id="cell67possible2" class="possible">2</p>
+                        <p id="cell67possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell67possible4" class="possible">4</p>
+                        <p id="cell67possible5" class="possible">5</p>
+                        <p id="cell67possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell67possible7" class="possible">7</p>
+                        <p id="cell67possible8" class="possible">8</p>
+                        <p id="cell67possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell68">
+                    <h1 id="cell68solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell68input" hidden>
+                        <p id="cell68possible1" class="possible">1</p>
+                        <p id="cell68possible2" class="possible">2</p>
+                        <p id="cell68possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell68possible4" class="possible">4</p>
+                        <p id="cell68possible5" class="possible">5</p>
+                        <p id="cell68possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell68possible7" class="possible">7</p>
+                        <p id="cell68possible8" class="possible">8</p>
+                        <p id="cell68possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell69">
+                    <h1 id="cell69solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell69input" hidden>
+                        <p id="cell69possible1" class="possible">1</p>
+                        <p id="cell69possible2" class="possible">2</p>
+                        <p id="cell69possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell69possible4" class="possible">4</p>
+                        <p id="cell69possible5" class="possible">5</p>
+                        <p id="cell69possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell69possible7" class="possible">7</p>
+                        <p id="cell69possible8" class="possible">8</p>
+                        <p id="cell69possible9" class="possible">9</p>
+                </div>
+            </div>
+            <div class="row" id="row7">
+                <div class="cell" id="cell71">
+                    <h1 id="cell71solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell71input" hidden>
+                        <p id="cell71possible1" class="possible">1</p>
+                        <p id="cell71possible2" class="possible">2</p>
+                        <p id="cell71possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell71possible4" class="possible">4</p>
+                        <p id="cell71possible5" class="possible">5</p>
+                        <p id="cell71possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell71possible7" class="possible">7</p>
+                        <p id="cell71possible8" class="possible">8</p>
+                        <p id="cell71possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell72">
+                    <h1 id="cell72solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell72input" hidden>
+                        <p id="cell72possible1" class="possible">1</p>
+                        <p id="cell72possible2" class="possible">2</p>
+                        <p id="cell72possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell72possible4" class="possible">4</p>
+                        <p id="cell72possible5" class="possible">5</p>
+                        <p id="cell72possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell72possible7" class="possible">7</p>
+                        <p id="cell72possible8" class="possible">8</p>
+                        <p id="cell72possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell73">
+                    <h1 id="cell73solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell73input" hidden>
+                        <p id="cell73possible1" class="possible">1</p>
+                        <p id="cell73possible2" class="possible">2</p>
+                        <p id="cell73possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell73possible4" class="possible">4</p>
+                        <p id="cell73possible5" class="possible">5</p>
+                        <p id="cell73possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell73possible7" class="possible">7</p>
+                        <p id="cell73possible8" class="possible">8</p>
+                        <p id="cell73possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell74">
+                    <h1 id="cell74solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell74input" hidden>
+                        <p id="cell74possible1" class="possible">1</p>
+                        <p id="cell74possible2" class="possible">2</p>
+                        <p id="cell74possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell74possible4" class="possible">4</p>
+                        <p id="cell74possible5" class="possible">5</p>
+                        <p id="cell74possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell74possible7" class="possible">7</p>
+                        <p id="cell74possible8" class="possible">8</p>
+                        <p id="cell74possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell75">
+                    <h1 id="cell75solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell75input" hidden>
+                        <p id="cell75possible1" class="possible">1</p>
+                        <p id="cell75possible2" class="possible">2</p>
+                        <p id="cell75possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell75possible4" class="possible">4</p>
+                        <p id="cell75possible5" class="possible">5</p>
+                        <p id="cell75possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell75possible7" class="possible">7</p>
+                        <p id="cell75possible8" class="possible">8</p>
+                        <p id="cell75possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell76">
+                    <h1 id="cell76solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell76input" hidden>
+                        <p id="cell76possible1" class="possible">1</p>
+                        <p id="cell76possible2" class="possible">2</p>
+                        <p id="cell76possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell76possible4" class="possible">4</p>
+                        <p id="cell76possible5" class="possible">5</p>
+                        <p id="cell76possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell76possible7" class="possible">7</p>
+                        <p id="cell76possible8" class="possible">8</p>
+                        <p id="cell76possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell77">
+                    <h1 id="cell77solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell77input" hidden>
+                        <p id="cell77possible1" class="possible">1</p>
+                        <p id="cell77possible2" class="possible">2</p>
+                        <p id="cell77possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell77possible4" class="possible">4</p>
+                        <p id="cell77possible5" class="possible">5</p>
+                        <p id="cell77possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell77possible7" class="possible">7</p>
+                        <p id="cell77possible8" class="possible">8</p>
+                        <p id="cell77possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell78">
+                    <h1 id="cell78solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell78input" hidden>
+                        <p id="cell78possible1" class="possible">1</p>
+                        <p id="cell78possible2" class="possible">2</p>
+                        <p id="cell78possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell78possible4" class="possible">4</p>
+                        <p id="cell78possible5" class="possible">5</p>
+                        <p id="cell78possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell78possible7" class="possible">7</p>
+                        <p id="cell78possible8" class="possible">8</p>
+                        <p id="cell78possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell79">
+                    <h1 id="cell79solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell79input" hidden>
+                        <p id="cell79possible1" class="possible">1</p>
+                        <p id="cell79possible2" class="possible">2</p>
+                        <p id="cell79possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell79possible4" class="possible">4</p>
+                        <p id="cell79possible5" class="possible">5</p>
+                        <p id="cell79possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell79possible7" class="possible">7</p>
+                        <p id="cell79possible8" class="possible">8</p>
+                        <p id="cell79possible9" class="possible">9</p>
+                </div>
+            </div>
+            <div class="row" id="row8">
+                <div class="cell" id="cell81">
+                    <h1 id="cell81solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell81input" hidden>
+                        <p id="cell81possible1" class="possible">1</p>
+                        <p id="cell81possible2" class="possible">2</p>
+                        <p id="cell81possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell81possible4" class="possible">4</p>
+                        <p id="cell81possible5" class="possible">5</p>
+                        <p id="cell81possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell81possible7" class="possible">7</p>
+                        <p id="cell81possible8" class="possible">8</p>
+                        <p id="cell81possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell82">
+                    <h1 id="cell82solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell82input" hidden>
+                        <p id="cell82possible1" class="possible">1</p>
+                        <p id="cell82possible2" class="possible">2</p>
+                        <p id="cell82possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell82possible4" class="possible">4</p>
+                        <p id="cell82possible5" class="possible">5</p>
+                        <p id="cell82possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell82possible7" class="possible">7</p>
+                        <p id="cell82possible8" class="possible">8</p>
+                        <p id="cell82possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell83">
+                    <h1 id="cell83solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell83input" hidden>
+                        <p id="cell83possible1" class="possible">1</p>
+                        <p id="cell83possible2" class="possible">2</p>
+                        <p id="cell83possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell83possible4" class="possible">4</p>
+                        <p id="cell83possible5" class="possible">5</p>
+                        <p id="cell83possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell83possible7" class="possible">7</p>
+                        <p id="cell83possible8" class="possible">8</p>
+                        <p id="cell83possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell84">
+                    <h1 id="cell84solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell84input" hidden>
+                        <p id="cell84possible1" class="possible">1</p>
+                        <p id="cell84possible2" class="possible">2</p>
+                        <p id="cell84possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell84possible4" class="possible">4</p>
+                        <p id="cell84possible5" class="possible">5</p>
+                        <p id="cell84possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell84possible7" class="possible">7</p>
+                        <p id="cell84possible8" class="possible">8</p>
+                        <p id="cell84possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell85">
+                    <h1 id="cell85solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell85input" hidden>
+                        <p id="cell85possible1" class="possible">1</p>
+                        <p id="cell85possible2" class="possible">2</p>
+                        <p id="cell85possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell85possible4" class="possible">4</p>
+                        <p id="cell85possible5" class="possible">5</p>
+                        <p id="cell85possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell85possible7" class="possible">7</p>
+                        <p id="cell85possible8" class="possible">8</p>
+                        <p id="cell85possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell86">
+                    <h1 id="cell86solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell86input" hidden>
+                        <p id="cell86possible1" class="possible">1</p>
+                        <p id="cell86possible2" class="possible">2</p>
+                        <p id="cell86possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell86possible4" class="possible">4</p>
+                        <p id="cell86possible5" class="possible">5</p>
+                        <p id="cell86possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell86possible7" class="possible">7</p>
+                        <p id="cell86possible8" class="possible">8</p>
+                        <p id="cell86possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell87">
+                    <h1 id="cell87solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell87input" hidden>
+                        <p id="cell87possible1" class="possible">1</p>
+                        <p id="cell87possible2" class="possible">2</p>
+                        <p id="cell87possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell87possible4" class="possible">4</p>
+                        <p id="cell87possible5" class="possible">5</p>
+                        <p id="cell87possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell87possible7" class="possible">7</p>
+                        <p id="cell87possible8" class="possible">8</p>
+                        <p id="cell87possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell88">
+                    <h1 id="cell88solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell88input" hidden>
+                        <p id="cell88possible1" class="possible">1</p>
+                        <p id="cell88possible2" class="possible">2</p>
+                        <p id="cell88possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell88possible4" class="possible">4</p>
+                        <p id="cell88possible5" class="possible">5</p>
+                        <p id="cell88possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell88possible7" class="possible">7</p>
+                        <p id="cell88possible8" class="possible">8</p>
+                        <p id="cell88possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell89">
+                    <h1 id="cell89solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell89input" hidden>
+                        <p id="cell89possible1" class="possible">1</p>
+                        <p id="cell89possible2" class="possible">2</p>
+                        <p id="cell89possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell89possible4" class="possible">4</p>
+                        <p id="cell89possible5" class="possible">5</p>
+                        <p id="cell89possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell89possible7" class="possible">7</p>
+                        <p id="cell89possible8" class="possible">8</p>
+                        <p id="cell89possible9" class="possible">9</p>
+                </div>
+            </div>
+            <div class="row" id="row9">
+                <div class="cell" id="cell91">
+                    <h1 id="cell91solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell91input" hidden>
+                        <p id="cell91possible1" class="possible">1</p>
+                        <p id="cell91possible2" class="possible">2</p>
+                        <p id="cell91possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell91possible4" class="possible">4</p>
+                        <p id="cell91possible5" class="possible">5</p>
+                        <p id="cell91possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell91possible7" class="possible">7</p>
+                        <p id="cell91possible8" class="possible">8</p>
+                        <p id="cell91possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell92">
+                    <h1 id="cell92solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell92input" hidden>
+                        <p id="cell92possible1" class="possible">1</p>
+                        <p id="cell92possible2" class="possible">2</p>
+                        <p id="cell92possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell92possible4" class="possible">4</p>
+                        <p id="cell92possible5" class="possible">5</p>
+                        <p id="cell92possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell92possible7" class="possible">7</p>
+                        <p id="cell92possible8" class="possible">8</p>
+                        <p id="cell92possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell93">
+                    <h1 id="cell93solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell93input" hidden>
+                        <p id="cell93possible1" class="possible">1</p>
+                        <p id="cell93possible2" class="possible">2</p>
+                        <p id="cell93possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell93possible4" class="possible">4</p>
+                        <p id="cell93possible5" class="possible">5</p>
+                        <p id="cell93possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell93possible7" class="possible">7</p>
+                        <p id="cell93possible8" class="possible">8</p>
+                        <p id="cell93possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell94">
+                    <h1 id="cell94solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell94input" hidden>
+                        <p id="cell94possible1" class="possible">1</p>
+                        <p id="cell94possible2" class="possible">2</p>
+                        <p id="cell94possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell94possible4" class="possible">4</p>
+                        <p id="cell94possible5" class="possible">5</p>
+                        <p id="cell94possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell94possible7" class="possible">7</p>
+                        <p id="cell94possible8" class="possible">8</p>
+                        <p id="cell94possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell95">
+                    <h1 id="cell95solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell95input" hidden>
+                        <p id="cell95possible1" class="possible">1</p>
+                        <p id="cell95possible2" class="possible">2</p>
+                        <p id="cell95possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell95possible4" class="possible">4</p>
+                        <p id="cell95possible5" class="possible">5</p>
+                        <p id="cell95possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell95possible7" class="possible">7</p>
+                        <p id="cell95possible8" class="possible">8</p>
+                        <p id="cell95possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell96">
+                    <h1 id="cell96solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell96input" hidden>
+                        <p id="cell96possible1" class="possible">1</p>
+                        <p id="cell96possible2" class="possible">2</p>
+                        <p id="cell96possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell96possible4" class="possible">4</p>
+                        <p id="cell96possible5" class="possible">5</p>
+                        <p id="cell96possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell96possible7" class="possible">7</p>
+                        <p id="cell96possible8" class="possible">8</p>
+                        <p id="cell96possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell97">
+                    <h1 id="cell97solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell97input" hidden>
+                        <p id="cell97possible1" class="possible">1</p>
+                        <p id="cell97possible2" class="possible">2</p>
+                        <p id="cell97possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell97possible4" class="possible">4</p>
+                        <p id="cell97possible5" class="possible">5</p>
+                        <p id="cell97possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell97possible7" class="possible">7</p>
+                        <p id="cell97possible8" class="possible">8</p>
+                        <p id="cell97possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell98">
+                    <h1 id="cell98solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell98input" hidden>
+                        <p id="cell98possible1" class="possible">1</p>
+                        <p id="cell98possible2" class="possible">2</p>
+                        <p id="cell98possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell98possible4" class="possible">4</p>
+                        <p id="cell98possible5" class="possible">5</p>
+                        <p id="cell98possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell98possible7" class="possible">7</p>
+                        <p id="cell98possible8" class="possible">8</p>
+                        <p id="cell98possible9" class="possible">9</p>
+                </div>
+                <div class="cell" id="cell99">
+                    <h1 id="cell99solution" class="solution" hidden></h1>
+                    <input type="text" class="input" id="cell99input" hidden>
+                        <p id="cell99possible1" class="possible">1</p>
+                        <p id="cell99possible2" class="possible">2</p>
+                        <p id="cell99possible3" class="possible">3</p>
+                        <br>
+                        <p id="cell99possible4" class="possible">4</p>
+                        <p id="cell99possible5" class="possible">5</p>
+                        <p id="cell99possible6" class="possible">6</p>
+                        <br>
+                        <p id="cell99possible7" class="possible">7</p>
+                        <p id="cell99possible8" class="possible">8</p>
+                        <p id="cell99possible9" class="possible">9</p>
+                </div>
+            </div>
+        </div>
+
+        <script src="/static/index.js"></script>
+
     </body>
 </html>

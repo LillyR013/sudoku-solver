@@ -1,0 +1,71 @@
+.possible {
+    display: inline-block;
+    width: 25%;
+    height: 30%;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 98%;
+    width: 98%;
+    margin: 1%;
+    padding: 0;
+    text-align: center;
+}
+
+.board {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 80%;
+    max-width: 80%;
+    aspect-ratio: 1/1;
+}
+
+.row {
+    display: flex;
+    height: 11.11%;
+    width: 100%;
+}
+
+.cell {
+    display: block;
+    height: 100%;
+    width: 11.11%;
+    border-top-color: black;
+    border-top-style: solid;
+    border-top-width: 1%;
+    border-left-color: black;
+    border-left-style: solid;
+    border-left-width: 1%;
+}
+
+#row4 .cell, #row7 .cell {
+    border-top-style: solid;
+    border-top-color: red;
+}
+
+#row9 .cell {
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: 1%;
+}
+
+#cell19, #cell29, #cell39, #cell49, #cell59, #cell69, #cell79, #cell89, #cell99 {
+    border-right-style: solid;
+    border-right-color: black;
+    border-right-width: 1%;
+}
+
+#cell14, #cell24, #cell34, #cell44, #cell54, #cell64, #cell74, #cell84, #cell94 {
+    border-left-style: solid;
+    border-left-color: red;
+    border-left-width: 1%;
+}
+
+#cell17, #cell27, #cell37, #cell47, #cell57, #cell67, #cell77, #cell87, #cell97 {
+    border-left-style: solid;
+    border-left-color: red;
+    border-left-width: 1%;
+}
