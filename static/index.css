@@ -6,6 +6,16 @@
     padding: 0;
 }
 
+.input {
+    max-width: 98%;
+    max-height: 98%;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    aspect-ratio: 1/1;
+    text-align: center;
+}
+
 html, body {
     height: 98%;
     width: 98%;
