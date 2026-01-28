@@ -481,6 +481,9 @@ async function checkForCellLockedValues() {
     // If all of the candidate locations for a number in a row or column are confined to a single 3x3 subgrid,
     // then that number cannot appear in any other cell of that subgrid outside of that row or column.
 
+    //Additionally, if all of the candidate locations for a number in a 3x3 subgrid are confined to a single row or column,
+    // then that number cannot appear in any other cell of that row or column outside of that subgrid.
+
     document.getElementById("stepDescripton").innerText = "Current Step: Checking for Locked Candidates";
     var changed = 0;
 
@@ -572,9 +575,252 @@ async function checkForCellLockedValues() {
         }
     }
 
+    for (let boxRow = 0; boxRow < 3; boxRow++) {
+        for (let boxCol = 0; boxCol < 3; boxCol++) {
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    document.getElementById("cell" + (boxRow * 3 + i + 1) + (boxCol * 3 + j + 1)).style.backgroundColor = "yellow";
+                }
+            }
+            await sleep(200);
+            let possiblePosition = new Map();
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    for (let val of possibleBoards[boxRow * 3 + i][boxCol * 3 + j]) {
+                        if (!possiblePosition.has(val)) {
+                            possiblePosition.set(val, []);
+                        }
+                        possiblePosition.get(val).push([boxRow * 3 + i, boxCol * 3 + j]);
+                    }
+                }
+            }
+
+            for (let [val, positions] of possiblePosition.entries()) {
+                let rowPositions = new Set();
+                let colPositions = new Set();
+                for (let pos of positions) {
+                    rowPositions.add(pos[0]);
+                    colPositions.add(pos[1]);
+                }
+                if (rowPositions.size == 1) {
+                    let row = Array.from(rowPositions)[0];
+                    // Remove val from other cells in the same row but outside this 3x3 subgrid
+                    for (let j = 0; j < 9; j++) {
+                        if (Math.floor(j / 3) == boxCol) continue;
+                        if (possibleBoards[row][j].has(val)) {
+                            possibleBoards[row][j].delete(val);
+                            changed++;
+                            document.getElementById("cell" + (row+1) + (j+1) + "possible" + val).style.display = "none";
+                            if(possibleBoards[row][j].size == 0) {
+                                badBoardAlert();
+                            }
+                        }
+                    }
+                }
+                if (colPositions.size == 1) {
+                    let col = Array.from(colPositions)[0];
+                    // Remove val from other cells in the same column but outside this 3x3 subgrid
+                    for (let i = 0; i < 9; i++) {
+                        if (Math.floor(i / 3) == boxRow) continue;
+                        if (possibleBoards[i][col].has(val)) {
+                            possibleBoards[i][col].delete(val);
+                            changed++;
+                            document.getElementById("cell" + (i+1) + (col+1) + "possible" + val).style.display = "none";
+                            if(possibleBoards[i][col].size == 0) {
+                                badBoardAlert();
+                            }
+                        }
+                    }
+                }
+            }
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    document.getElementById("cell" + (boxRow * 3 + i + 1) + (boxCol * 3 + j + 1)).style.backgroundColor = "transparent";
+                }
+            }
+        }
+    }
+
     if (changed != 0) {
         pruneBoard();
     } else {
+        checkForMathmaticallyRemovedPossibilities();
+    }
+
+}
+
+async function checkForMathmaticallyRemovedPossibilities() {
+
+    /*
+     * For any given row, column, or 3x3 subgrid, if a set of N cells contain only the same N possible values,
+     * then those N values can be removed from the possible values of all other cells in that row, column, or subgrid,
+     * where N is greater than 1 and less than the total number of empty cells in that row, column, or subgrid.
+     */
+
+    var changed = 0;
+    document.getElementById("stepDescripton").innerText = "Current Step: Checking for Mathematically Removed Possibilities";
+
+    //Check all rows for this condition
+    for (let i = 0; i < 9; i++) {
+        document.getElementById("row" + (i+1)).style.backgroundColor = "yellow";
+        await sleep(200);
+        let cellPossibilityMap = new Map();
+        let cellsWithPossibilities = [];
+        for (let j = 0; j < 9; j++) {
+            cellsWithPossibilities.push({set: possibleBoards[i][j], pos: [i, j]});
+        }
+        
+        for (let n = 2; n <= 8; n++) {
+            for (let startIdx = 0; startIdx < cellsWithPossibilities.length; startIdx++) {
+                let group = [cellsWithPossibilities[startIdx]];
+                let groupSet = new Set(cellsWithPossibilities[startIdx].set);
+                
+                for (let checkIdx = startIdx + 1; checkIdx < cellsWithPossibilities.length && group.length < n; checkIdx++) {
+                    let unionSet = new Set([...groupSet, ...cellsWithPossibilities[checkIdx].set]);
+                    if (unionSet.size <= n) {
+                        group.push(cellsWithPossibilities[checkIdx]);
+                        groupSet = unionSet;
+                    }
+                }
+                
+                if (group.length == n && groupSet.size == n) {
+                    // Remove these possible values from other cells in the same row
+                    for (let col = 0; col < 9; col++) {
+                        if (!group.some(cell => cell.pos[1] == col)) {
+                            for (let val of groupSet) {
+                                if (possibleBoards[i][col].has(val)) {
+                                    possibleBoards[i][col].delete(val);
+                                    changed++;
+                                    document.getElementById("cell" + (i+1) + (col+1) + "possible" + val).style.display = "none";
+                                    if(possibleBoards[i][col].size == 0) {
+                                        badBoardAlert();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        document.getElementById("row" + (i+1)).style.backgroundColor = "transparent";
+
+    }
+
+    //Check all columns for this condition
+    for (let i = 0; i < 9; i++) {
+        for (let k = 0; k < 9; k++) {
+            document.getElementById("cell" + (k+1) + (i+1)).style.backgroundColor = "yellow";
+        }
+        await sleep(200);
+        let cellPossibilityMap = new Map();
+        let cellsWithPossibilities = [];
+        for (let j = 0; j < 9; j++) {
+            cellsWithPossibilities.push({set: possibleBoards[j][i], pos: [j, i]});
+        }
+        
+        for (let n = 2; n <= 8; n++) {
+            for (let startIdx = 0; startIdx < cellsWithPossibilities.length; startIdx++) {
+                let group = [cellsWithPossibilities[startIdx]];
+                let groupSet = new Set(cellsWithPossibilities[startIdx].set);
+                
+                for (let checkIdx = startIdx + 1; checkIdx < cellsWithPossibilities.length && group.length < n; checkIdx++) {
+                    let unionSet = new Set([...groupSet, ...cellsWithPossibilities[checkIdx].set]);
+                    if (unionSet.size <= n) {
+                        group.push(cellsWithPossibilities[checkIdx]);
+                        groupSet = unionSet;
+                    }
+                }
+                
+                if (group.length == n && groupSet.size == n) {
+                    // Remove these possible values from other cells in the same column
+                    for (let row = 0; row < 9; row++) {
+                        if (!group.some(cell => cell.pos[0] == row)) {
+                            for (let val of groupSet) {
+                                if (possibleBoards[row][i].has(val)) {
+                                    possibleBoards[row][i].delete(val);
+                                    changed++;
+                                    document.getElementById("cell" + (row+1) + (i+1) + "possible" + val).style.display = "none";
+                                    if(possibleBoards[row][i].size == 0) {
+                                        badBoardAlert();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        for (let k = 0; k < 9; k++) {
+            document.getElementById("cell" + (k+1) + (i+1)).style.backgroundColor = "transparent";
+        }
+    }
+
+    //Check all 3x3 subgrids for this condition
+    for (let boxRow = 0; boxRow < 3; boxRow++) {
+        for (let boxCol = 0; boxCol < 3; boxCol++) {
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    document.getElementById("cell" + (boxRow * 3 + i + 1) + (boxCol * 3 + j + 1)).style.backgroundColor = "yellow";
+                }  
+            }
+            await sleep(200);
+            let cellsWithPossibilities = [];
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    let row = boxRow * 3 + i;
+                    let col = boxCol * 3 + j;
+                    cellsWithPossibilities.push({set: possibleBoards[row][col], pos: [row, col]});
+                }
+            }
+            
+            for (let n = 2; n <= 8; n++) {
+                for (let startIdx = 0; startIdx < cellsWithPossibilities.length; startIdx++) {
+                    let group = [cellsWithPossibilities[startIdx]];
+                    let groupSet = new Set(cellsWithPossibilities[startIdx].set);
+                    
+                    for (let checkIdx = startIdx + 1; checkIdx < cellsWithPossibilities.length && group.length < n; checkIdx++) {
+                        let unionSet = new Set([...groupSet, ...cellsWithPossibilities[checkIdx].set]);
+                        if (unionSet.size <= n) {
+                            group.push(cellsWithPossibilities[checkIdx]);
+                            groupSet = unionSet;
+                        }
+                    }
+                    
+                    if (group.length == n && groupSet.size == n) {
+                        // Remove these possible values from other cells in the same 3x3 subgrid
+                        for (let i = 0; i < 3; i++) {
+                            for (let j = 0; j < 3; j++) {
+                                let row = boxRow * 3 + i;
+                                let col = boxCol * 3 + j;
+                                if (!group.some(cell => cell.pos[0] == row && cell.pos[1] == col)) {
+                                    for (let val of groupSet) {
+                                        if (possibleBoards[row][col].has(val)) {
+                                            possibleBoards[row][col].delete(val);
+                                            changed++;
+                                            document.getElementById("cell" + (row+1) + (col+1) + "possible" + val).style.display = "none";
+                                            if(possibleBoards[row][col].size == 0) {
+                                                badBoardAlert();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    document.getElementById("cell" + (boxRow * 3 + i + 1) + (boxCol * 3 + j + 1)).style.backgroundColor = "transparent";
+                }
+            }
+        }
+    }
+
+    if (changed != 0) {
+        pruneBoard();
+    }
+    else {
         alert("No further solving techniques implemented. The puzzle may require guessing or is unsolvable with current methods.");
         document.getElementById("stepDescripton").innerText = "Current Step: None";
         return;
